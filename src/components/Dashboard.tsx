@@ -375,7 +375,7 @@ const Dashboard = () => {
             }
           });
         },
-        (err) => {
+        () => {
           setLocationError(
             "Unable to retrieve your location. Showing sample data."
           );
@@ -618,7 +618,7 @@ const Dashboard = () => {
     let prompt = "";
 
     if (isLowBudget) {
-      prompt = `You are a nutritionist and chef. Generate a single low-budget, simple recipe that aligns with a ${userData.dietaryPreference} diet and aims for approximately ${calorieTarget} calories. Use minimal, affordable ingredients and basic cooking techniques. Include a title, ingredients list, and step-by-step instructions.`;
+      prompt = `You are a nutritionist and chef. Generate a single low-budget, simple recipe that aligns with a ${userData.dietaryPreference} diet and aims for approximately ${calorieTarget} calories. Use minimal, affordable ingredients and basic cooking techniques. Include a title, ingredients list, and step-by-step instructions and also an estimated cost.`;
     } else {
       prompt = `You are a nutritionist and chef. Generate a single recipe that uses the following ingredients: ${selectedIngredients.join(
         ", "
@@ -629,7 +629,7 @@ const Dashboard = () => {
 
     try {
       const response = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" +
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" +
           import.meta.env.VITE_GEMINI_API_KEY,
         {
           method: "POST",
@@ -675,7 +675,7 @@ const Dashboard = () => {
 
     try {
       const response = await fetch(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" +
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" +
           import.meta.env.VITE_GEMINI_API_KEY,
         {
           method: "POST",
